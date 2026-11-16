@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OOTD</title>
+  <meta name="description" content="OOTD — virtual try-on. See the outfit on you before you wear it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left"></div>
+    <a class="brand" href="/" aria-label="OOTD home">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="brand-name">OOTD</span>
+      <span class="brand-badge">virtual try-on</span>
+    </a>
+    <div style="position:relative;justify-self:end">
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
+        <span></span>
+      </button>
+      <nav class="menu-panel" id="menuPanel" aria-label="Site">
+        <a href="/">Home</a>
+        <a href="/studio">Studio</a>
+        <a href="/studio#proof">Proof</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Make your outfit — <span class="hl">try-on ready</span></h1>
+        <p class="hero-lede">
+          Upload a person photo and a garment. OOTD develops a photoreal try-on —
+          your outfit of the day, proved in one frame.
+        </p>
+
+        <div class="cta-bar">
+          <span class="cta-chip">Studio</span>
+          <a class="cta-main" href="/studio">
+            <span>Open OOTD Studio →</span>
+            <span aria-hidden="true">↵</span>
+          </a>
+        </div>
+        <p class="cta-note">Or load samples in studio and hit <code>Develop try-on</code></p>
+
+        <ul class="feature-list">
+          <li>
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h14"/></svg>
+            <div><strong>Person + garment.</strong> Two frames in. One proof out.</div>
+          </li>
+          <li>
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+            <div><strong>Local model.</strong> Runs on your machine against OOTD weights.</div>
+          </li>
+          <li>
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 7h10v10H7z"/><path d="M3 3h4v4H3zM17 3h4v4h-4zM3 17h4v4H3zM17 17h4v4h-4z"/></svg>
+            <div><strong>Tops, bottoms, one-pieces.</strong> Model shots or flat-lays.</div>
+          </li>
+          <li>
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5"/><path d="M20 12a8 8 0 0 1-14 5"/><path d="M18 4v4h-4M6 20v-4h4"/></svg>
+            <div><strong>Speed or quality.</strong> Turbo for previews, Balanced for fit.</div>
+          </li>
+        </ul>
+
+        <div class="dash-field" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+        <div class="preview-panel">
+          <div class="active-tag">
+            <span class="bars" aria-hidden="true"><b></b><b></b><b></b><b></b></span>
+            Active
+          </div>
+          <div class="preview-row">
+            <span class="chip"><span class="method">TRY</span> /studio · develop</span>
+            <span class="chip"><span class="method">OUT</span> proof.png · ready</span>
+          </div>
+          <div class="preview-photo">
+            <img src="/assets/hero-tryon.png" alt="Example OOTD try-on result" width="420" height="560">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="checker" aria-hidden="true"></div>
+
+    <section class="section" id="shift">
+      <div class="section-inner">
+        <span class="kicker">The fit</span>
+        <h2>Your photo is <span class="hl">now the model</span></h2>
+        <p>
+          Stop guessing from flat product shots. OOTD puts the garment on
+          <span class="mark">your frame</span> — face, pose, and scene kept —
+          so you can decide before you buy or post.
+        </p>
+        <div class="contact-strip" aria-label="Person, garment, and result">
+          <img src="/assets/sample-person.webp" alt="Sample person">
+          <img src="/assets/sample-garment.webp" alt="Sample garment">
+          <img src="/assets/hero-tryon.png" alt="Try-on result">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="section-inner">
+        <span class="kicker green">Workflow</span>
+        <h2>Two frames in. <span class="hl green">One proof out.</span></h2>
+        <p>OOTD keeps the path short — load, set category, develop.</p>
+        <div class="grid-3">
+          <article class="card">
+            <h3>01 · Person frame</h3>
+            <p>Clear face, full torso. Natural light when you can.</p>
+          </article>
+          <article class="card">
+            <h3>02 · Garment frame</h3>
+            <p>Model shot or flat-lay. Tops, bottoms, or one-pieces.</p>
+          </article>
+          <article class="card">
+            <h3>03 · Develop</h3>
+            <p>Pick Turbo or Balanced. Download the proof when it lands.</p>
+          </article>
+        </div>
+        <p style="margin-top:28px">
+          <a class="btn-ink" href="/studio">Open Studio</a>
+        </p>
+      </div>
+    </section>
+
+    <div class="checker" aria-hidden="true"></div>
+
+    <section class="section" style="background:var(--yellow)">
+      <div class="section-inner">
+        <span class="kicker yellow">Get started</span>
+        <h2>Setup is a breeze</h2>
+        <p>
+          Studio is already wired to the local model. Open it, drop two images
+          (or use samples), and develop a try-on.
+        </p>
+        <div class="cta-bar">
+          <span class="cta-chip">Go</span>
+          <a class="cta-main" href="/studio">
+            <span>Launch OOTD Studio</span>
+            <span aria-hidden="true">↵</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <strong>OOTD</strong>
+      </div>
+      <div class="footer-grid">
+        <div>
+          <h3>Product</h3>
+          <a href="/">Home</a>
+          <a href="/studio">Studio</a>
+        </div>
+        <div>
+          <h3>Try-on</h3>
+          <a href="/studio">Develop</a>
+          <a href="/api/sample/person">Sample person</a>
+          <a href="/api/sample/garment">Sample garment</a>
+        </div>
+        <div>
+          <h3>Model</h3>
+          <a href="#">OOTD Model</a>
+        </div>
+      </div>
+      <p class="footer-copy">OOTD · Outfit of the day · Local virtual try-on</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('menuPanel');
+    btn.addEventListener('click', () => {
+      const open = panel.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+      if (!btn.contains(e.target) && !panel.contains(e.target)) {
+        panel.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OOTD Studio</title>
+  <meta name="description" content="OOTD Studio — develop a virtual try-on from a person photo and a garment photo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="page-studio">
+  <header class="topbar">
+    <div class="topbar-left"></div>
+    <a class="brand" href="/" aria-label="OOTD home">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="brand-name">OOTD</span>
+      <span class="brand-badge">studio</span>
+    </a>
+    <div style="position:relative;justify-self:end">
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
+        <span></span>
+      </button>
+      <nav class="menu-panel" id="menuPanel" aria-label="Site">
+        <a href="/">Home</a>
+        <a href="/studio">Studio</a>
+        <a href="#proof">Proof</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="studio">
+    <section class="studio-hero">
+      <span class="kicker yellow">Studio</span>
+      <h1>Develop a try-on</h1>
+      <p>Load a person frame and a garment frame. OOTD runs the local model and returns the proof.</p>
+    </section>
+
+    <div class="bench">
+      <div class="negatives">
+        <label class="negative" for="personInput">
+          <div class="negative-head">
+            <span>Person</span>
+            <button type="button" class="text-btn" id="samplePersonBtn">Use sample</button>
+          </div>
+          <div class="negative-frame" id="personDrop">
+            <img id="personImg" alt="" hidden>
+            <div class="negative-empty" id="personPlaceholder">
+              <span>Drop or click</span>
+              <small>WebP · PNG · JPEG</small>
+            </div>
+          </div>
+          <input type="file" id="personInput" accept="image/*" hidden>
+        </label>
+
+        <label class="negative" for="garmentInput">
+          <div class="negative-head">
+            <span>Garment</span>
+            <button type="button" class="text-btn" id="sampleGarmentBtn">Use sample</button>
+          </div>
+          <div class="negative-frame" id="garmentDrop">
+            <img id="garmentImg" alt="" hidden>
+            <div class="negative-empty" id="garmentPlaceholder">
+              <span>Drop or click</span>
+              <small>Model shot or flat-lay</small>
+            </div>
+          </div>
+          <input type="file" id="garmentInput" accept="image/*" hidden>
+        </label>
+      </div>
+
+      <aside class="develop-panel">
+        <div class="field">
+          <label for="categorySelect">Category</label>
+          <select id="categorySelect">
+            <option value="tops" selected>Tops</option>
+            <option value="bottoms">Bottoms</option>
+            <option value="one-pieces">One-pieces</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="photoTypeSelect">Garment photo</label>
+          <select id="photoTypeSelect">
+            <option value="model" selected>Model shot</option>
+            <option value="flat-lay">Flat-lay</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="timestepsSelect">Quality</label>
+          <select id="timestepsSelect">
+            <option value="10">Turbo — faster, softer</option>
+            <option value="20" selected>Balanced — recommended</option>
+            <option value="30">Quality — sharper fit</option>
+            <option value="50">Max — slowest</option>
+          </select>
+        </div>
+
+        <button type="button" class="btn-ink btn-block" id="generateBtn">
+          <span class="spinner" id="spinner" hidden></span>
+          <span id="btnText">Develop try-on</span>
+        </button>
+        <p class="status" id="statusBanner" role="status">Load both frames to begin.</p>
+      </aside>
+    </div>
+
+    <section class="result-bay" id="proof" aria-live="polite">
+      <div class="result-head">
+        <span>Proof</span>
+        <a id="downloadLink" class="text-btn" download="ootd-tryon.png" hidden>Download</a>
+      </div>
+      <div class="result-frame" id="outputDisplay">
+        <img id="resultImg" alt="Try-on result" hidden>
+        <p class="result-empty" id="outputPlaceholder">The developed frame appears here.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="checker" aria-hidden="true"></div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <strong>OOTD</strong>
+      </div>
+      <div class="footer-grid">
+        <div>
+          <h3>Product</h3>
+          <a href="/">Home</a>
+          <a href="/studio">Studio</a>
+        </div>
+        <div>
+          <h3>Try-on</h3>
+          <a href="/studio">Develop</a>
+        </div>
+        <div>
+          <h3>Model</h3>
+          <a href="#">OOTD Model</a>
+        </div>
+      </div>
+      <p class="footer-copy">OOTD Studio · Local virtual try-on</p>
+    </div>
+  </footer>
+
+  <script src="/studio.js"></script>
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('menuPanel');
+    btn.addEventListener('click', () => {
+      const open = panel.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+      if (!btn.contains(e.target) && !panel.contains(e.target)) {
+        panel.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>
