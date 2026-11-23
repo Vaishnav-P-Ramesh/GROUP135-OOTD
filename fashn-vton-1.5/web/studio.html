@@ -11,30 +11,30 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body class="page-studio">
-  <header class="topbar">
-    <div class="topbar-left"></div>
-    <a class="brand" href="/" aria-label="OOTD home">
-      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
-      <span class="brand-name">OOTD</span>
-      <span class="brand-badge">studio</span>
-    </a>
-    <div style="position:relative;justify-self:end">
-      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
-        <span></span>
-      </button>
-      <nav class="menu-panel" id="menuPanel" aria-label="Site">
-        <a href="/">Home</a>
-        <a href="/studio">Studio</a>
-        <a href="#proof">Proof</a>
-      </nav>
-    </div>
-  </header>
+  <div class="topbar-wrapper" style="position:sticky;top:18px;z-index:100;display:flex;justify-content:center;padding:0 16px;">
+    <header class="bean-nav-bar" style="display:flex;align-items:center;justify-content:space-between;width:min(580px,100%);height:58px;padding:0 16px;background:rgba(255,246,124,0.88);backdrop-filter:blur(16px);border:2px solid #141414;border-radius:999px;box-shadow:4px 4px 0 #141414;">
+      <div style="flex:1;display:flex;justify-content:flex-start;">
+        <a href="/" style="font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#141414;padding:7px 15px;border-radius:999px;text-decoration:none;">HOME</a>
+      </div>
+      <a href="/" style="display:flex;align-items:center;justify-content:center;text-decoration:none;margin:0 10px;">
+        <div style="width:46px;height:46px;border-radius:50%;background:#ffffff;border:2px solid #141414;display:flex;align-items:center;justify-content:center;box-shadow:2.5px 2.5px 0 #141414;">
+          <div style="width:36px;height:36px;border-radius:50%;border:1.5px dashed #141414;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:0.12em;color:#141414;">OOTD</span>
+          </div>
+        </div>
+      </a>
+      <div style="flex:1;display:flex;justify-content:flex-end;gap:8px;">
+        <a href="/studio" style="font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#ffffff;background:#141414;padding:7px 15px;border-radius:999px;text-decoration:none;">STUDIO</a>
+        <a href="#stylist" style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#141414;padding:6px 12px;border-radius:999px;opacity:0.9;text-decoration:none;">STYLIST</a>
+      </div>
+    </header>
+  </div>
 
   <main class="studio">
     <section class="studio-hero">
-      <span class="kicker yellow">Studio</span>
-      <h1>Develop a try-on</h1>
-      <p>Load a person frame and a garment frame. OOTD runs the local model and returns the proof.</p>
+      <span class="kicker yellow">Fitting Room</span>
+      <h1>Virtual Try-On</h1>
+      <p>Upload a photo of yourself and a clothing item to preview your new outfit instantly.</p>
     </section>
 
     <div class="bench">
@@ -89,29 +89,29 @@
         <div class="field">
           <label for="timestepsSelect">Quality</label>
           <select id="timestepsSelect">
-            <option value="10">Turbo — faster, softer</option>
-            <option value="20" selected>Balanced — recommended</option>
-            <option value="30">Quality — sharper fit</option>
-            <option value="50">Max — slowest</option>
+            <option value="10">Fast</option>
+            <option value="20" selected>Standard (Recommended)</option>
+            <option value="30">High Quality</option>
+            <option value="50">Ultra HD</option>
           </select>
         </div>
 
         <button type="button" class="btn-ink btn-block" id="generateBtn">
           <span class="spinner" id="spinner" hidden></span>
-          <span id="btnText">Develop try-on</span>
+          <span id="btnText">Try on outfit</span>
         </button>
-        <p class="status" id="statusBanner" role="status">Load both frames to begin.</p>
+        <p class="status" id="statusBanner" role="status">Upload both photos to begin.</p>
       </aside>
     </div>
 
     <section class="result-bay" id="proof" aria-live="polite">
       <div class="result-head">
-        <span>Proof</span>
-        <a id="downloadLink" class="text-btn" download="ootd-tryon.png" hidden>Download</a>
+        <span>Your Result</span>
+        <a id="downloadLink" class="text-btn" download="ootd-tryon.png" hidden>Download Image</a>
       </div>
       <div class="result-frame" id="outputDisplay">
         <img id="resultImg" alt="Try-on result" hidden>
-        <p class="result-empty" id="outputPlaceholder">The developed frame appears here.</p>
+        <p class="result-empty" id="outputPlaceholder">Your generated outfit will appear here.</p>
       </div>
     </section>
   </main>
@@ -144,19 +144,5 @@
   </footer>
 
   <script src="/studio.js"></script>
-  <script>
-    const btn = document.getElementById('menuBtn');
-    const panel = document.getElementById('menuPanel');
-    btn.addEventListener('click', () => {
-      const open = panel.classList.toggle('is-open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    document.addEventListener('click', (e) => {
-      if (!btn.contains(e.target) && !panel.contains(e.target)) {
-        panel.classList.remove('is-open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  </script>
 </body>
 </html>

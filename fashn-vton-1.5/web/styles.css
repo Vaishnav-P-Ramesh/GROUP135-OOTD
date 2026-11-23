@@ -139,35 +139,11 @@ button {
 }
 
 .menu-btn {
-  justify-self: end;
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border: 1.5px solid var(--ink);
-  border-radius: 8px;
-  background: var(--yellow);
-}
-
-.menu-btn span {
-  display: block;
-  width: 16px;
-  height: 1.5px;
-  background: var(--ink);
-  box-shadow: 0 -5px 0 var(--ink), 0 5px 0 var(--ink);
+  display: none !important;
 }
 
 .menu-panel {
-  display: none;
-  position: absolute;
-  top: calc(var(--nav-h) - 1px);
-  right: 16px;
-  min-width: 200px;
-  background: var(--paper);
-  border: 1.5px solid var(--ink);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  display: none !important;
 }
 
 .menu-panel.is-open {
